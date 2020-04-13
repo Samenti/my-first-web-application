@@ -3,21 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Photo Viewer</title>
 </head>
 <body>
     <div class="site">
         <div class="viewer-area">
-            <div class="prev-button"></div>
+            <div class="button prev">
+                <img src="arrow.svg" alt="" id="left-arrow">
+            </div>
             <div class="viewer-frame">
-                <img src="images/alps-barn-clouds-country-358532.jpg" alt="">
+                <img src="images/landscape-photography-of-snowy-mountain-1366919.jpg" alt="" class="viewed">
                 <div class="image-info-box">
                     <h1>Title</h1>
                     <p>Some description of the image.</p>
                 </div>
             </div>
-            <div class="next-button"></div>
+            <div class="button next">
+                <img src="arrow.svg" alt="" id="right-arrow">
+            </div>
         </div>
         <div class="thumbnails-area"></div>
     </div>
