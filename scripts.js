@@ -60,8 +60,13 @@ let imgData = [{
     description: 'Lorem ipsum'
 }]
 
+/* Add a better modulo operator so it works with negative numbers as well. */
+Number.prototype.mod = function(n) {
+    return ((this%n)+n)%n;
+};
+
 /* Change currently viewed image, its title and description to the first one. */
-currentImageIndex = 11
+currentImageIndex = 0
 $('#viewed-img').attr('src', imgData[currentImageIndex].file);
 $('#img-title').text(imgData[currentImageIndex].title);
 $('#img-desc').text(imgData[currentImageIndex].description);
@@ -70,4 +75,23 @@ $('#img-desc').text(imgData[currentImageIndex].description);
 $('#close-button').click(() => {
     $('.image-info-box').css('visibility', 'hidden');
     $('#close-button').css('visibility', 'hidden');
+});
+
+/* Pressing a button on the side switches to the previous/next image. */
+$('.prev').click(() => {
+    currentImageIndex = (--currentImageIndex).mod(imgData.length);
+    $('#viewed-img').attr('src', imgData[currentImageIndex].file);
+    $('#img-title').text(imgData[currentImageIndex].title);
+    $('#img-desc').text(imgData[currentImageIndex].description);
+    $('.image-info-box').css('visibility', 'visible');
+    $('#close-button').css('visibility', 'visible');
+});
+
+$('.next').click(() => {
+    currentImageIndex = (++currentImageIndex).mod(imgData.length);
+    $('#viewed-img').attr('src', imgData[currentImageIndex].file);
+    $('#img-title').text(imgData[currentImageIndex].title);
+    $('#img-desc').text(imgData[currentImageIndex].description);
+    $('.image-info-box').css('visibility', 'visible');
+    $('#close-button').css('visibility', 'visible');
 });
