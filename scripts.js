@@ -43,7 +43,7 @@ let imgData = [{
     title: 'Snowy Mountain Landscape',
     description: 'Lorem ipsum'
 }, {
-    file: 'close-up-of-leaf-326055.jpg',
+    file: 'images/close-up-of-leaf-326055.jpg',
     title: 'Leaf Close-up',
     description: 'Lorem ipsum'
 }, {
@@ -61,7 +61,13 @@ let imgData = [{
 }]
 
 /* Change currently viewed image, its title and description to the first one. */
-currentImageIndex = 2
+currentImageIndex = 11
 $('#viewed-img').attr('src', imgData[currentImageIndex].file);
 $('#img-title').text(imgData[currentImageIndex].title);
 $('#img-desc').text(imgData[currentImageIndex].description);
+
+/* Hide image info box on clicking the x. */
+$('#close-button').click(() => {
+    $('.image-info-box').css('visibility', 'hidden');
+    $('#close-button').css('visibility', 'hidden');
+});
