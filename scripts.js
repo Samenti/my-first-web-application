@@ -1,63 +1,63 @@
 let imgData = [{
     file: 'images/photo-of-a-pathway-in-a-forest-1496373.jpg',
     title: 'Pathway in a Forest',
-    description: 'Lorem ipsum'
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
 }, {
     file: 'images/animal-bright-bunny-chamomile-372166.jpg',
-    title: 'Bright Bunny Chamomile',
-    description: 'Lorem ipsum'
+    title: 'Bunny in a Chamomile Field',
+    description: 'Pellentesque commodo lectus eget tempor sollicitudin.'
 }, {
     file: 'images/alps-barn-clouds-country-358532.jpg',
     title: 'Countryside in the Alps',
-    description: 'Lorem ipsum'
+    description: 'Vivamus consectetur est et nunc convallis sagittis.'
 }, {
     file: 'images/pink-flowers-photograph-1083822.jpg',
-    title: 'Pink Flowers',
-    description: 'Lorem ipsum'
+    title: 'Shades of Pink',
+    description: 'Nunc porttitor diam nec ornare tempor.'
 }, {
     file: 'images/architecture-art-bridge-cliff-459203.jpg',
     title: 'Cliff Bridge',
-    description: 'Lorem ipsum'
+    description: 'Cras id elit egestas, rhoncus nisl sit amet, venenatis mi.'
 }, {
     file: 'images/close-up-of-tree-against-sky-255441.jpg',
-    title: 'Tree Against Sky',
-    description: 'Lorem ipsum'
+    title: 'Heart',
+    description: 'In vitae dui luctus, dapibus orci vitae, condimentum magna.'
 }, {
     file: 'images/bird-s-eye-view-of-city-2246476.jpg',
     title: "Bird's Eye View of the City",
-    description: 'Lorem ipsum'
+    description: 'Ut imperdiet dolor vitae tempor auctor.'
 }, {
     file: 'images/seaport-during-daytime-132037.jpg',
-    title: 'Seaport During Daytime',
-    description: 'Lorem ipsum'
+    title: 'Seaport',
+    description: 'In non nulla ultricies, posuere leo in, tincidunt justo.'
 }, {
     file: 'images/blue-sea-under-clear-blue-sky-50594.jpg',
-    title: 'Blue Sea Under Clear Blue Sky',
-    description: 'Lorem ipsum'
+    title: 'Blue Cliffed Coast Under Clear Blue Sky',
+    description: 'Aenean volutpat turpis in justo luctus congue.'
 }, {
     file: 'images/animal-africa-zoo-lion-33045.jpg',
     title: 'Lion',
-    description: 'Lorem ipsum'
+    description: 'Cras vitae eros varius, tincidunt odio vulputate, mollis turpis.'
 }, {
     file: 'images/landscape-photography-of-snowy-mountain-1366919.jpg',
     title: 'Snowy Mountain Landscape',
-    description: 'Lorem ipsum'
+    description: 'Integer pulvinar leo eget mi aliquet, sit amet tincidunt felis blandit.'
 }, {
     file: 'images/close-up-of-leaf-326055.jpg',
-    title: 'Leaf Close-up',
-    description: 'Lorem ipsum'
+    title: 'Glowing Treebark',
+    description: 'Aenean dapibus sem non ligula rhoncus feugiat.'
 }, {
     file: 'images/photography-of-fall-trees-1591447.jpg',
-    title: 'Fall Trees',
-    description: 'Lorem ipsum'
+    title: 'Autumn Walkway',
+    description: 'In ut arcu eu lorem eleifend elementum.'
 }, {
     file: 'images/flight-landscape-nature-sky-36717.jpg',
-    title: '"Nature Sky"',
-    description: 'Lorem ipsum'
+    title: 'Hot Pink Twilight',
+    description: 'Pellentesque dictum leo sed erat tempus, sed facilisis libero bibendum.'
 }, {
     file: 'images/gray-bridge-and-trees-814499.jpg',
-    title: 'Bridge and Trees',
-    description: 'Lorem ipsum'
+    title: 'Lake Bridge',
+    description: 'Quisque vulputate dui non eros viverra euismod.'
 }]
 
 /* Add a better modulo operator so it works with negative numbers as well. */
