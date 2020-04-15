@@ -37,7 +37,7 @@ body {
     background-color: whitesmoke;
 }
 
-.left {
+.prev {
     left: 0;
 }
 
@@ -46,11 +46,26 @@ body {
 }
 
 #left-arrow, #right-arrow {
+    background: url("arrow.svg") no-repeat;
+    background-size: contain;
     width: 25px;
+    height: 39px;
 }
 
 #right-arrow {
     transform: rotate(180deg);
+}
+
+#left-arrow:hover {
+    cursor: pointer;
+    background: url("arrow_hover.svg") no-repeat;
+    background-size: contain;
+}
+
+#right-arrow:hover {
+    cursor: pointer;
+    background: url("arrow_hover.svg") no-repeat;
+    background-size: contain;
 }
 
 .viewer-frame {

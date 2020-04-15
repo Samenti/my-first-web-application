@@ -78,7 +78,7 @@ $('#close-button').click(() => {
 });
 
 /* Pressing a button on the side switches to the previous/next image. */
-$('.prev').click(() => {
+$('#left-arrow').click(() => {
     currentImageIndex = (--currentImageIndex).mod(imgData.length);
     $('#viewed-img').attr('src', imgData[currentImageIndex].file);
     $('#img-title').text(imgData[currentImageIndex].title);
@@ -87,7 +87,7 @@ $('.prev').click(() => {
     $('#close-button').css('visibility', 'visible');
 });
 
-$('.next').click(() => {
+$('#right-arrow').click(() => {
     currentImageIndex = (++currentImageIndex).mod(imgData.length);
     $('#viewed-img').attr('src', imgData[currentImageIndex].file);
     $('#img-title').text(imgData[currentImageIndex].title);
