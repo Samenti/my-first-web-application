@@ -10,7 +10,7 @@ body {
 
 .site {
     width: 1200px;
-    height: 800px;
+    height: 880px;
     margin: 40px auto 40px auto;
     background-color: #343434;
 }
@@ -115,5 +115,106 @@ p {
 }
 
 .thumbnails-area {
-    background-color: red;
+    width: 1200px;
+    height: 170px;
+    margin-top: 10px;
+    position: relative;
+}
+
+.thumbnails-button {
+    width: 50px;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #343434;
+}
+
+#thumb-left-arrow, #thumb-right-arrow {
+    background: url("thumb_arrow.svg") no-repeat;
+    background-size: contain;
+    width: 15px;
+    height: 23px;
+}
+
+#thumb-right-arrow {
+    transform: rotate(180deg);
+}
+
+#thumb-left-arrow:hover {
+    cursor: pointer;
+    background: url("thumb_arrow_hover.svg") no-repeat;
+    background-size: contain;
+}
+
+#thumb-right-arrow:hover {
+    cursor: pointer;
+    background: url("thumb_arrow_hover.svg") no-repeat;
+    background-size: contain;
+}
+
+.thumbnails-frame {
+    width: 1100px;
+    position: absolute;
+    left: 50px;
+    padding: 15px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+}
+
+.thumbnail {
+    width: 120px;
+    height: 120px;
+    margin: 10px;
+    padding: 5px;
+    box-shadow: 3px 3px 4px 1px rgba(0,0,0,0.75);
+    background-color: whitesmoke;
+    position: relative;
+}
+
+.thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumbnail .tooltiptext {
+    width: 120px;
+    background-color: black;
+    opacity: 0.8;
+    color: whitesmoke;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    bottom: 102%;
+    left: 50%;
+    margin-left: -60px;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity .6s;
+}
+
+.tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.thumbnail:hover .tooltiptext {
+    opacity: 1;
 }
