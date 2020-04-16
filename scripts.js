@@ -60,6 +60,29 @@ let imgData = [{
     description: 'Quisque vulputate dui non eros viverra euismod.'
 }]
 
+let thumbnailFrames = [{
+    imgtagID: "#thumb-1",
+    tooltipID: "#tooltip-1"
+}, {
+    imgtagID: "#thumb-2",
+    tooltipID: "#tooltip-2"
+}, {
+    imgtagID: "#thumb-3",
+    tooltipID: "#tooltip-3"
+}, {
+    imgtagID: "#thumb-4",
+    tooltipID: "#tooltip-4"
+}, {
+    imgtagID: "#thumb-5",
+    tooltipID: "#tooltip-5"
+}, {
+    imgtagID: "#thumb-6",
+    tooltipID: "#tooltip-6"
+}, {
+    imgtagID: "#thumb-7",
+    tooltipID: "#tooltip-7"
+}]
+
 /* Add a better modulo operator so it works with negative numbers as well. */
 Number.prototype.mod = function(n) {
     return ((this%n)+n)%n;
@@ -72,9 +95,18 @@ let changeImage = (num) => {
     $('#img-desc').text(imgData[num].description);
 };
 
+/* Function to change thumbnails to 7 consecutive images starting from 'thumbnailedPosition'. */
+function changeThumbnail(frame, index) {
+    $(frame.imgtagID).attr('src', imgData[index + thumbnailedPosition].file);
+    $(frame.tooltipID).text(imgData[index + thumbnailedPosition].title);
+}
+
 /* Change currently viewed image, its title and description to the first one. */
 let currentImageIndex = 0;
 changeImage(currentImageIndex);
+/* Change current thumbnails to the first 7 image. */
+let thumbnailedPosition = 0;
+thumbnailFrames.forEach(changeThumbnail);
 
 /* Pressing a button on the side switches to the previous/next image. 
 It also restores visibility to the image info box. */
