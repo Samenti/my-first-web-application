@@ -97,16 +97,23 @@ let changeImage = (num) => {
 
 /* Function to change thumbnails to 7 consecutive images starting from 'thumbnailedPosition'. */
 function changeThumbnail(frame, index) {
-    $(frame.imgtagID).attr('src', imgData[index + thumbnailedPosition].file);
-    $(frame.tooltipID).text(imgData[index + thumbnailedPosition].title);
+    let imageIndex = index + thumbnailedPosition;
+    $(frame.imgtagID).attr('src', imgData[imageIndex].file);
+    $(frame.tooltipID).text(imgData[imageIndex].title);
+    /* This adds changeImage functionality to the thumbnails. */
+    $(frame.imgtagID).parent().on('click', function() {
+        $('#viewed-img').attr('src', imgData[imageIndex].file);
+        $('#img-title').text(imgData[imageIndex].title);
+        $('#img-desc').text(imgData[imageIndex].description);
+    });
 }
 
 /* Change currently viewed image, its title and description to the first one. */
 let currentImageIndex = 0;
-changeImage(currentImageIndex);
+$(document).ready(changeImage(currentImageIndex));
 /* Change current thumbnails to the first 7 image. */
 let thumbnailedPosition = 0;
-thumbnailFrames.forEach(changeThumbnail);
+$(document).ready(thumbnailFrames.forEach(changeThumbnail));
 
 /* Pressing a button on the side switches to the previous/next image. 
 It also restores visibility to the image info box. */
