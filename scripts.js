@@ -131,3 +131,14 @@ $('#close-button').click(() => {
     $('.image-info-box').css('visibility', 'hidden');
     $('#close-button').css('visibility', 'hidden');
 });
+
+/* Pressing a button on the side of the thumbnail row scrolls the thumbnail frames by one. */
+$('#thumb-left-arrow').click(() => {
+    thumbnailedPosition = (--thumbnailedPosition).mod(thumbnailFrames.length);
+    thumbnailFrames.forEach(changeThumbnail);
+});
+
+$('#thumb-right-arrow').click(() => {
+    thumbnailedPosition = (++thumbnailedPosition).mod(thumbnailFrames.length);
+    thumbnailFrames.forEach(changeThumbnail);
+});
