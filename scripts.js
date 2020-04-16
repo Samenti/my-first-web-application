@@ -65,33 +65,37 @@ Number.prototype.mod = function(n) {
     return ((this%n)+n)%n;
 };
 
+/* Put image with index 'num' into the viewer frame. */
+let changeImage = (num) => {
+    $('#viewed-img').attr('src', imgData[num].file);
+    $('#img-title').text(imgData[num].title);
+    $('#img-desc').text(imgData[num].description);
+};
+
 /* Change currently viewed image, its title and description to the first one. */
-currentImageIndex = 0
-$('#viewed-img').attr('src', imgData[currentImageIndex].file);
-$('#img-title').text(imgData[currentImageIndex].title);
-$('#img-desc').text(imgData[currentImageIndex].description);
+let currentImageIndex = 0;
+changeImage(currentImageIndex);
 
-/* Hide image info box on clicking the x. */
-$('#close-button').click(() => {
-    $('.image-info-box').css('visibility', 'hidden');
-    $('#close-button').css('visibility', 'hidden');
-});
-
-/* Pressing a button on the side switches to the previous/next image. */
+/* Pressing a button on the side switches to the previous/next image. 
+It also restores visibility to the image info box. */
 $('#left-arrow').click(() => {
     currentImageIndex = (--currentImageIndex).mod(imgData.length);
-    $('#viewed-img').attr('src', imgData[currentImageIndex].file);
-    $('#img-title').text(imgData[currentImageIndex].title);
-    $('#img-desc').text(imgData[currentImageIndex].description);
+    changeImage(currentImageIndex);
+
     $('.image-info-box').css('visibility', 'visible');
     $('#close-button').css('visibility', 'visible');
 });
 
 $('#right-arrow').click(() => {
     currentImageIndex = (++currentImageIndex).mod(imgData.length);
-    $('#viewed-img').attr('src', imgData[currentImageIndex].file);
-    $('#img-title').text(imgData[currentImageIndex].title);
-    $('#img-desc').text(imgData[currentImageIndex].description);
+    changeImage(currentImageIndex);
+    
     $('.image-info-box').css('visibility', 'visible');
     $('#close-button').css('visibility', 'visible');
+});
+
+/* Hide image info box on clicking the x. */
+$('#close-button').click(() => {
+    $('.image-info-box').css('visibility', 'hidden');
+    $('#close-button').css('visibility', 'hidden');
 });
