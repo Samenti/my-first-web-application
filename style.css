@@ -227,3 +227,7 @@ p {
 .thumbnail:hover .tooltiptext {
     opacity: 1;
 }
+
+.selected {
+    background-color: red;
+}

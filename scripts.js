@@ -62,25 +62,32 @@ let imgData = [{
 
 let thumbnailFrames = [{
     imgtagID: "#thumb-1",
-    tooltipID: "#tooltip-1"
+    tooltipID: "#tooltip-1",
+    assignedImage: 0
 }, {
     imgtagID: "#thumb-2",
-    tooltipID: "#tooltip-2"
+    tooltipID: "#tooltip-2",
+    assignedImage: 1
 }, {
     imgtagID: "#thumb-3",
-    tooltipID: "#tooltip-3"
+    tooltipID: "#tooltip-3",
+    assignedImage: 2
 }, {
     imgtagID: "#thumb-4",
-    tooltipID: "#tooltip-4"
+    tooltipID: "#tooltip-4",
+    assignedImage: 3
 }, {
     imgtagID: "#thumb-5",
-    tooltipID: "#tooltip-5"
+    tooltipID: "#tooltip-5",
+    assignedImage: 4
 }, {
     imgtagID: "#thumb-6",
-    tooltipID: "#tooltip-6"
+    tooltipID: "#tooltip-6",
+    assignedImage: 5
 }, {
     imgtagID: "#thumb-7",
-    tooltipID: "#tooltip-7"
+    tooltipID: "#tooltip-7",
+    assignedImage: 6
 }]
 
 /* Add a better modulo operator so it works with negative numbers as well. */
@@ -93,6 +100,26 @@ let changeImage = (num) => {
     $('#viewed-img').attr('src', imgData[num].file);
     $('#img-title').text(imgData[num].title);
     $('#img-desc').text(imgData[num].description);
+    currentImageIndex = num;
+    
+    /* Search thumbnailFrames if any of them features the currently viewed image, if yes, apply 'selected' style on that thumbnail. */
+    let currentThumbnails = [];
+    thumbnailFrames.forEach(frame => {
+        currentThumbnails.push(frame.assignedImage)
+    });
+    let currentImagePosition = -1;
+    currentImagePosition = currentThumbnails.indexOf(currentImageIndex)
+    if (currentImagePosition !== -1) {
+        $(thumbnailFrames[currentImagePosition].imgtagID).parent('div').addClass('selected');
+        currentThumbnails.splice(currentImagePosition, 1);
+        currentThumbnails.forEach((element) => {
+            $(thumbnailFrames[element].imgtagID).parent('div').removeClass('selected');
+        });
+    } else {
+        currentThumbnails.forEach((element) => {
+            $(thumbnailFrames[element].imgtagID).parent('div').removeClass('selected');
+        });
+    }
 };
 
 /* Function to change thumbnails to 7 consecutive images starting from 'thumbnailedPosition'. */
@@ -100,11 +127,16 @@ function changeThumbnail(frame, index) {
     let imageIndex = index + thumbnailedPosition;
     $(frame.imgtagID).attr('src', imgData[imageIndex].file);
     $(frame.tooltipID).text(imgData[imageIndex].title);
+    
+    /* This feeds back imageIndex into the thumbnail array. */
+    frame.assignedImage = imageIndex
+    
     /* This adds changeImage functionality to the thumbnails. */
     $(frame.imgtagID).parent().on('click', function() {
         $('#viewed-img').attr('src', imgData[imageIndex].file);
         $('#img-title').text(imgData[imageIndex].title);
         $('#img-desc').text(imgData[imageIndex].description);
+        currentImageIndex = imageIndex;
     });
 }
 
@@ -143,9 +175,11 @@ $('#close-button').click(() => {
 $('#thumb-left-arrow').click(() => {
     thumbnailedPosition = (--thumbnailedPosition).mod(thumbnailFrames.length);
     thumbnailFrames.forEach(changeThumbnail);
+    console.log(thumbnailFrames[0].assignedImage, thumbnailFrames[1].assignedImage, thumbnailFrames[2].assignedImage, thumbnailFrames[3].assignedImage, thumbnailFrames[4].assignedImage, thumbnailFrames[5].assignedImage, thumbnailFrames[6].assignedImage);
 });
 
 $('#thumb-right-arrow').click(() => {
     thumbnailedPosition = (++thumbnailedPosition).mod(thumbnailFrames.length);
     thumbnailFrames.forEach(changeThumbnail);
+    console.log(thumbnailFrames[0].assignedImage, thumbnailFrames[1].assignedImage, thumbnailFrames[2].assignedImage, thumbnailFrames[3].assignedImage, thumbnailFrames[4].assignedImage, thumbnailFrames[5].assignedImage, thumbnailFrames[6].assignedImage);
 });
