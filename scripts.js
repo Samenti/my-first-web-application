@@ -105,6 +105,18 @@ function printer(array) {
     }
 }
 
+/* Remove front #. */
+function removeHash (str) {
+    return str.substr(1);
+}
+
+/* This function can be used to add click handlers onto thumbnail frames so that they also take arguments. */
+function addClickHandler(elem, arg1) {
+    elem.addEventListener('click', function(e) {
+        changeImage(arg1);
+    }, false);
+}
+
 /* Add a better modulo operator so it works with negative numbers as well. */
 Number.prototype.mod = function(n) {
     return ((this%n)+n)%n;
@@ -154,13 +166,14 @@ function changeThumbnail(frame, index) {
     /* This feeds back imageIndex into the thumbnail array. */
     frame.assignedImage = imageIndex
     
+    addClickHandler(document.getElementById(removeHash(frame.imgtagID)).parentNode, imageIndex);
     /* This adds changeImage functionality to the thumbnails. */
-    $(frame.imgtagID).parent().on('click', function() {
-        $('#viewed-img').attr('src', imgData[imageIndex].file);
-        $('#img-title').text(imgData[imageIndex].title);
-        $('#img-desc').text(imgData[imageIndex].description);
-        currentImageIndex = imageIndex;
-    });
+    // $(frame.imgtagID).parent().on('click', function() {
+    //     $('#viewed-img').attr('src', imgData[imageIndex].file);
+    //     $('#img-title').text(imgData[imageIndex].title);
+    //     $('#img-desc').text(imgData[imageIndex].description);
+    //     currentImageIndex = imageIndex;
+    // });
 }
 
 /* Change currently viewed image, its title and description to the first one. */
