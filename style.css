@@ -229,5 +229,16 @@ p {
 }
 
 .selected {
-    background-color: red;
+    top: -10px;
+}
+
+.selected::before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    margin-left: -8px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent whitesmoke transparent;
 }
