@@ -124,7 +124,7 @@ let changeImage = (num) => {
 
 /* Function to change thumbnails to 7 consecutive images starting from 'thumbnailedPosition'. */
 function changeThumbnail(frame, index) {
-    let imageIndex = index + thumbnailedPosition;
+    let imageIndex = (index + thumbnailedPosition).mod(imgData.length);
     $(frame.imgtagID).attr('src', imgData[imageIndex].file);
     $(frame.tooltipID).text(imgData[imageIndex].title);
     
@@ -173,13 +173,13 @@ $('#close-button').click(() => {
 
 /* Pressing a button on the side of the thumbnail row scrolls the thumbnail frames by one. */
 $('#thumb-left-arrow').click(() => {
-    thumbnailedPosition = (--thumbnailedPosition).mod(thumbnailFrames.length);
+    thumbnailedPosition = (--thumbnailedPosition).mod(imgData.length);
     thumbnailFrames.forEach(changeThumbnail);
     console.log(thumbnailFrames[0].assignedImage, thumbnailFrames[1].assignedImage, thumbnailFrames[2].assignedImage, thumbnailFrames[3].assignedImage, thumbnailFrames[4].assignedImage, thumbnailFrames[5].assignedImage, thumbnailFrames[6].assignedImage);
 });
 
 $('#thumb-right-arrow').click(() => {
-    thumbnailedPosition = (++thumbnailedPosition).mod(thumbnailFrames.length);
+    thumbnailedPosition = (++thumbnailedPosition).mod(imgData.length);
     thumbnailFrames.forEach(changeThumbnail);
     console.log(thumbnailFrames[0].assignedImage, thumbnailFrames[1].assignedImage, thumbnailFrames[2].assignedImage, thumbnailFrames[3].assignedImage, thumbnailFrames[4].assignedImage, thumbnailFrames[5].assignedImage, thumbnailFrames[6].assignedImage);
 });
