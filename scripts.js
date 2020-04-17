@@ -90,13 +90,28 @@ let thumbnailFrames = [{
     assignedImage: 6
 }]
 
+/* Prints to the console the elements of 2-levels deep nested array. */
+function printer(array) {
+    console.log("This array has the following items:")
+    for (i = 0; i < array.length; i++) {
+        itemText = "["
+        for (j = 0; j < array[i].length; j++) {
+            itemText += array[i][j]
+            itemText += ", "
+        }
+        itemText = itemText.slice(0, -2)
+        itemText += "]"
+        console.log(itemText)
+    }
+}
+
 /* Add a better modulo operator so it works with negative numbers as well. */
 Number.prototype.mod = function(n) {
     return ((this%n)+n)%n;
 };
 
 /* Put image with index 'num' into the viewer frame. */
-let changeImage = (num) => {
+function changeImage (num) {
     $('#viewed-img').attr('src', imgData[num].file);
     $('#img-title').text(imgData[num].title);
     $('#img-desc').text(imgData[num].description);
@@ -104,20 +119,28 @@ let changeImage = (num) => {
     
     /* Search thumbnailFrames if any of them features the currently viewed image, if yes, apply 'selected' style on that thumbnail. */
     let currentThumbnails = [];
-    thumbnailFrames.forEach(frame => {
-        currentThumbnails.push(frame.assignedImage)
+    thumbnailFrames.forEach((frame, index) => {
+        currentThumbnails.push([index, frame.assignedImage])
     });
+    printer(currentThumbnails);
     let currentImagePosition = -1;
-    currentImagePosition = currentThumbnails.indexOf(currentImageIndex)
+    for (i = 0; i < currentThumbnails.length; i++) {
+        if (currentThumbnails[i][1] == currentImageIndex) {
+            currentImagePosition = currentThumbnails[i][0];
+            break;
+        }
+    }
     if (currentImagePosition !== -1) {
+        console.log('image found in thumbnails: ', currentImagePosition)
         $(thumbnailFrames[currentImagePosition].imgtagID).parent('div').addClass('selected');
         currentThumbnails.splice(currentImagePosition, 1);
-        currentThumbnails.forEach((element) => {
-            $(thumbnailFrames[element].imgtagID).parent('div').removeClass('selected');
+        currentThumbnails.forEach((thumbnail) => {
+            $(thumbnailFrames[thumbnail[0]].imgtagID).parent('div').removeClass('selected');
         });
     } else {
-        currentThumbnails.forEach((element) => {
-            $(thumbnailFrames[element].imgtagID).parent('div').removeClass('selected');
+        console.log('image NOT found in thumbnails')
+        currentThumbnails.forEach((thumbnail) => {
+            $(thumbnailFrames[thumbnail[0]].imgtagID).parent('div').removeClass('selected');
         });
     }
 };
@@ -175,11 +198,63 @@ $('#close-button').click(() => {
 $('#thumb-left-arrow').click(() => {
     thumbnailedPosition = (--thumbnailedPosition).mod(imgData.length);
     thumbnailFrames.forEach(changeThumbnail);
-    console.log(thumbnailFrames[0].assignedImage, thumbnailFrames[1].assignedImage, thumbnailFrames[2].assignedImage, thumbnailFrames[3].assignedImage, thumbnailFrames[4].assignedImage, thumbnailFrames[5].assignedImage, thumbnailFrames[6].assignedImage);
+
+    /* Search thumbnailFrames if any of them features the currently viewed image, if yes, apply 'selected' style on that thumbnail. */
+    let currentThumbnails = [];
+    thumbnailFrames.forEach((frame, index) => {
+        currentThumbnails.push([index, frame.assignedImage])
+    });
+    printer(currentThumbnails);
+    let currentImagePosition = -1;
+    for (i = 0; i < currentThumbnails.length; i++) {
+        if (currentThumbnails[i][1] == currentImageIndex) {
+            currentImagePosition = currentThumbnails[i][0];
+            break;
+        }
+    }
+    if (currentImagePosition !== -1) {
+        console.log('image found in thumbnails: ', currentImagePosition)
+        $(thumbnailFrames[currentImagePosition].imgtagID).parent('div').addClass('selected');
+        currentThumbnails.splice(currentImagePosition, 1);
+        currentThumbnails.forEach((thumbnail) => {
+            $(thumbnailFrames[thumbnail[0]].imgtagID).parent('div').removeClass('selected');
+        });
+    } else {
+        console.log('image NOT found in thumbnails')
+        currentThumbnails.forEach((thumbnail) => {
+            $(thumbnailFrames[thumbnail[0]].imgtagID).parent('div').removeClass('selected');
+        });
+    }
 });
 
 $('#thumb-right-arrow').click(() => {
     thumbnailedPosition = (++thumbnailedPosition).mod(imgData.length);
     thumbnailFrames.forEach(changeThumbnail);
-    console.log(thumbnailFrames[0].assignedImage, thumbnailFrames[1].assignedImage, thumbnailFrames[2].assignedImage, thumbnailFrames[3].assignedImage, thumbnailFrames[4].assignedImage, thumbnailFrames[5].assignedImage, thumbnailFrames[6].assignedImage);
+    
+    /* Search thumbnailFrames if any of them features the currently viewed image, if yes, apply 'selected' style on that thumbnail. */
+    let currentThumbnails = [];
+    thumbnailFrames.forEach((frame, index) => {
+        currentThumbnails.push([index, frame.assignedImage])
+    });
+    printer(currentThumbnails);
+    let currentImagePosition = -1;
+    for (i = 0; i < currentThumbnails.length; i++) {
+        if (currentThumbnails[i][1] == currentImageIndex) {
+            currentImagePosition = currentThumbnails[i][0];
+            break;
+        }
+    }
+    if (currentImagePosition !== -1) {
+        console.log('image found in thumbnails: ', currentImagePosition)
+        $(thumbnailFrames[currentImagePosition].imgtagID).parent('div').addClass('selected');
+        currentThumbnails.splice(currentImagePosition, 1);
+        currentThumbnails.forEach((thumbnail) => {
+            $(thumbnailFrames[thumbnail[0]].imgtagID).parent('div').removeClass('selected');
+        });
+    } else {
+        console.log('image NOT found in thumbnails')
+        currentThumbnails.forEach((thumbnail) => {
+            $(thumbnailFrames[thumbnail[0]].imgtagID).parent('div').removeClass('selected');
+        });
+    }
 });
